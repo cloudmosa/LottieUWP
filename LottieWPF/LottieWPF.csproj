@@ -1,0 +1,437 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{408EA524-90F4-40CF-A0D2-B73C0BA1F5B9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LottieWPF</RootNamespace>
+    <AssemblyName>LottieWPF</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\LottieUWP\AccelerateDecelerateInterpolator.cs">
+      <Link>AccelerateDecelerateInterpolator.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\AnimatableColorValue.cs">
+      <Link>AnimatableColorValue.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\AnimatableFloatValue.cs">
+      <Link>AnimatableFloatValue.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\AnimatableGradientColorValue.cs">
+      <Link>AnimatableGradientColorValue.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\AnimatableIntegerValue.cs">
+      <Link>AnimatableIntegerValue.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\AnimatablePathValue.cs">
+      <Link>AnimatablePathValue.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\AnimatablePointValue.cs">
+      <Link>AnimatablePointValue.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\AnimatableScaleValue.cs">
+      <Link>AnimatableScaleValue.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\AnimatableShapeValue.cs">
+      <Link>AnimatableShapeValue.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\AnimatableSplitDimensionPathValue.cs">
+      <Link>AnimatableSplitDimensionPathValue.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\AnimatableTextFrame.cs">
+      <Link>AnimatableTextFrame.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\AnimatableTextProperties.cs">
+      <Link>AnimatableTextProperties.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\AnimatableTransform.cs">
+      <Link>AnimatableTransform.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\AnimatableValueParser.cs">
+      <Link>AnimatableValueParser.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\Animator.cs">
+      <Link>Animator.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\BaseAnimatableValue.cs">
+      <Link>BaseAnimatableValue.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\BaseKeyframeAnimation.cs">
+      <Link>BaseKeyframeAnimation.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\BaseLayer.cs">
+      <Link>BaseLayer.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\BaseStrokeContent.cs">
+      <Link>BaseStrokeContent.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\BitmapCanvas.cs">
+      <Link>BitmapCanvas.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\CachedPathIterator.cs">
+      <Link>CachedPathIterator.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\CircleShape.cs">
+      <Link>CircleShape.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\ColorFactory.cs">
+      <Link>ColorFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\ColorFilter.cs">
+      <Link>ColorFilter.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\ColorKeyframeAnimation.cs">
+      <Link>ColorKeyframeAnimation.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\CompositionLayer.cs">
+      <Link>CompositionLayer.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\ContentGroup.cs">
+      <Link>ContentGroup.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\CubicCurveData.cs">
+      <Link>CubicCurveData.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\DashPathEffect.cs">
+      <Link>DashPathEffect.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\DocumentData.cs">
+      <Link>DocumentData.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\EllipseContent.cs">
+      <Link>EllipseContent.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\FileCompositionLoader.cs">
+      <Link>FileCompositionLoader.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\FillContent.cs">
+      <Link>FillContent.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\FloatKeyframeAnimation.cs">
+      <Link>FloatKeyframeAnimation.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\Font.cs">
+      <Link>Font.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\FontAssetDelegate.cs">
+      <Link>FontAssetDelegate.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\FontAssetManager.cs">
+      <Link>FontAssetManager.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\FontCharacter.cs">
+      <Link>FontCharacter.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\GammaEvaluator.cs">
+      <Link>GammaEvaluator.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\Gradient.cs">
+      <Link>Gradient.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\GradientColor.cs">
+      <Link>GradientColor.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\GradientColorKeyframeAnimation.cs">
+      <Link>GradientColorKeyframeAnimation.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\GradientFill.cs">
+      <Link>GradientFill.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\GradientFillContent.cs">
+      <Link>GradientFillContent.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\GradientStroke.cs">
+      <Link>GradientStroke.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\GradientStrokeContent.cs">
+      <Link>GradientStrokeContent.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\GradientType.cs">
+      <Link>GradientType.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\IAnimatableValue.cs">
+      <Link>IAnimatableValue.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\IContent.cs">
+      <Link>IContent.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\IContentModel.cs">
+      <Link>IContentModel.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\IDrawingContent.cs">
+      <Link>IDrawingContent.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\IGreedyContent.cs">
+      <Link>IGreedyContent.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\IImageAssetDelegate.cs">
+      <Link>IImageAssetDelegate.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\IInterpolator.cs">
+      <Link>IInterpolator.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\ImageAssetManager.cs">
+      <Link>ImageAssetManager.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\ImageLayer.cs">
+      <Link>ImageLayer.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\IModifierContent.cs">
+      <Link>IModifierContent.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\IntegerKeyframeAnimation.cs">
+      <Link>IntegerKeyframeAnimation.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\IPathContent.cs">
+      <Link>IPathContent.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\JSONArrayExt.cs">
+      <Link>JSONArrayExt.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\JsonCompositionLoader.cs">
+      <Link>JsonCompositionLoader.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\JsonUtils.cs">
+      <Link>JsonUtils.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\Keyframe.cs">
+      <Link>Keyframe.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\KeyframeAnimation.cs">
+      <Link>KeyframeAnimation.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\Layer.cs">
+      <Link>Layer.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\LinearGradient.cs">
+      <Link>LinearGradient.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\LinearInterpolator.cs">
+      <Link>LinearInterpolator.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\LottieAnimationView.cs">
+      <Link>LottieAnimationView.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\LottieComposition.cs">
+      <Link>LottieComposition.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\LottieDrawable.cs">
+      <Link>LottieDrawable.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\LottieImageAsset.cs">
+      <Link>LottieImageAsset.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\LottieLog.cs">
+      <Link>LottieLog.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\Mask.cs">
+      <Link>Mask.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\MaskKeyframeAnimation.cs">
+      <Link>MaskKeyframeAnimation.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\MathExt.cs">
+      <Link>MathExt.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\MatrixExt.cs">
+      <Link>MatrixExt.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\MeanCalculator.cs">
+      <Link>MeanCalculator.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\MergePaths.cs">
+      <Link>MergePaths.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\MergePathsContent.cs">
+      <Link>MergePathsContent.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\MiscUtils.cs">
+      <Link>MiscUtils.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\NullLayer.cs">
+      <Link>NullLayer.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\Paint.cs">
+      <Link>Paint.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\Path.cs">
+      <Link>Path.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\PathEffect.cs">
+      <Link>PathEffect.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\PathInterpolator.cs">
+      <Link>PathInterpolator.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\PathKeyframe.cs">
+      <Link>PathKeyframe.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\PathKeyframeAnimation.cs">
+      <Link>PathKeyframeAnimation.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\PathMeasure.cs">
+      <Link>PathMeasure.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\PerformanceTracker.cs">
+      <Link>PerformanceTracker.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\PointF.cs">
+      <Link>PointF.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\PointFFactory.cs">
+      <Link>PointFFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\PointKeyframeAnimation.cs">
+      <Link>PointKeyframeAnimation.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\PolystarContent.cs">
+      <Link>PolystarContent.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\PolystarShape.cs">
+      <Link>PolystarShape.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\PorterDuff.cs">
+      <Link>PorterDuff.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\PorterDuffColorFilter.cs">
+      <Link>PorterDuffColorFilter.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\PorterDuffXfermode.cs">
+      <Link>PorterDuffXfermode.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\RadialGradient.cs">
+      <Link>RadialGradient.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\RectangleContent.cs">
+      <Link>RectangleContent.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\RectangleShape.cs">
+      <Link>RectangleShape.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\RectExt.cs">
+      <Link>RectExt.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\Repeater.cs">
+      <Link>Repeater.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\RepeaterContent.cs">
+      <Link>RepeaterContent.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\ScaleKeyframeAnimation.cs">
+      <Link>ScaleKeyframeAnimation.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\ScaleXY.cs">
+      <Link>ScaleXY.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\Shader.cs">
+      <Link>Shader.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\ShapeContent.cs">
+      <Link>ShapeContent.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\ShapeData.cs">
+      <Link>ShapeData.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\ShapeFill.cs">
+      <Link>ShapeFill.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\ShapeGroup.cs">
+      <Link>ShapeGroup.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\ShapeKeyframeAnimation.cs">
+      <Link>ShapeKeyframeAnimation.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\ShapeLayer.cs">
+      <Link>ShapeLayer.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\ShapePath.cs">
+      <Link>ShapePath.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\ShapeStroke.cs">
+      <Link>ShapeStroke.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\ShapeTrimPath.cs">
+      <Link>ShapeTrimPath.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\SimpleColorFilter.cs">
+      <Link>SimpleColorFilter.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\SolidLayer.cs">
+      <Link>SolidLayer.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\SplitDimensionPathKeyframeAnimation.cs">
+      <Link>SplitDimensionPathKeyframeAnimation.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\StaticKeyframeAnimation.cs">
+      <Link>StaticKeyframeAnimation.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\StrokeContent.cs">
+      <Link>StrokeContent.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\TextDelegate.cs">
+      <Link>TextDelegate.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\TextKeyframeAnimation.cs">
+      <Link>TextKeyframeAnimation.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\TextLayer.cs">
+      <Link>TextLayer.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\TransformKeyframeAnimation.cs">
+      <Link>TransformKeyframeAnimation.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\TrimPathContent.cs">
+      <Link>TrimPathContent.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\Typeface.cs">
+      <Link>Typeface.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\Utils.cs">
+      <Link>Utils.cs</Link>
+    </Compile>
+    <Compile Include="..\LottieUWP\ValueAnimator.cs">
+      <Link>ValueAnimator.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
