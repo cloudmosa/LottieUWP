@@ -1,32 +1,34 @@
-﻿using Windows.Data.Json;
+﻿using Newtonsoft.Json.Linq;
 
 namespace LottieUWP
 {
     internal static class JsonUtils
     {
-        internal static PointF PointFromJsonObject(JsonObject values, float scale)
+        internal static PointF PointFromJsonObject(JObject values, float scale)
         {
             return new PointF(ValueFromObject(values["x"]) * scale, ValueFromObject(values["y"]) * scale);
         }
 
-        internal static PointF PointFromJsonArray(JsonArray values, float scale)
+        internal static PointF PointFromJsonArray(JObject values, float scale)
         {
             if (values.Count < 2)
             {
                 throw new System.ArgumentException("Unable to parse point for " + values);
             }
-            return new PointF((float)values.GetNumberAt(0, 1) * scale, (float)values.GetNumberAt(1, 1) * scale);
+            var value0 = values[0] != null ? values[0].Value<float>() : 1;
+            var value1 = values[1] != null ? values[1].Value<float>() : 1;
+            return new PointF(value0 * scale, value1 * scale);
         }
 
-        internal static float ValueFromObject(IJsonValue @object)
+        internal static float ValueFromObject(JToken @object)
         {
-            if (@object.ValueType == JsonValueType.Number)
+            if (@object.Type == JTokenType.Integer || @object.Type == JTokenType.Float)
             {
-                return (float)@object.GetNumber();
+                return @object.Value<float>();
             }
-            if (@object.ValueType == JsonValueType.Array)
+            if (@object.Type == JTokenType.Array)
             {
-                return (float)@object.GetArray()[0].GetNumber();
+                return @object[0].Value<float>();
             }
             return 0;
         }

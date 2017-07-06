@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Windows.Data.Json;
+using Newtonsoft.Json.Linq;
 
 namespace LottieUWP
 {
@@ -115,7 +115,7 @@ namespace LottieUWP
 
         internal static class KeyFrameFactory
         {
-            internal static Keyframe<T> NewInstance(JsonObject json, LottieComposition composition, float scale, IAnimatableValueFactory<T> valueFactory)
+            internal static Keyframe<T> NewInstance(JObject json, LottieComposition composition, float scale, IAnimatableValueFactory<T> valueFactory)
             {
                 PointF cp1 = null;
                 PointF cp2 = null;
@@ -124,28 +124,27 @@ namespace LottieUWP
                 var endValue = default(T);
                 IInterpolator interpolator = null;
 
-                if (json.ContainsKey("t"))
-                {
-                    startFrame = (float)json.GetNamedNumber("t", 0);
-                    if (json.TryGetValue("s", out var startValueJson))
-                    {
+                if (json["t"] != null && (json["t"].Type == JTokenType.Float || json["t"].Type == JTokenType.Integer)) {
+                    startFrame = json["t"].Value<float>();
+                    if (json.TryGetValue("s", out startValueJson)) {
                         startValue = valueFactory.ValueFromObject(startValueJson, scale);
                     }
 
-                    if (json.TryGetValue("e", out var endValueJson))
-                    {
+                    JToken endValueJson;
+                    if (json.TryGetValue("e", out endValueJson)) {
                         endValue = valueFactory.ValueFromObject(endValueJson, scale);
                     }
 
-                    var cp1Json = json.GetNamedObject("o", null);
-                    var cp2Json = json.GetNamedObject("i", null);
-                    if (cp1Json != null && cp2Json != null)
-                    {
-                        cp1 = JsonUtils.PointFromJsonObject(cp1Json, scale);
-                        cp2 = JsonUtils.PointFromJsonObject(cp2Json, scale);
+                    var cp1Json = json["o"];
+                    var cp2Json = json["i"];
+                    if (cp1Json != null && cp1Json.Type == JTokenType.Object &&
+                        cp2Json != null && cp2Json.Type == JTokenType.Object) {
+                        cp1 = JsonUtils.PointFromJsonObject((JObject)cp1Json, scale);
+                        cp2 = JsonUtils.PointFromJsonObject((JObject)cp2Json, scale);
                     }
 
-                    var hold = (int)json.GetNamedNumber("h", 0) == 1;
+                    var holdValue = json["h"] != null ? json["h"].Value<int>() : 0;
+                    var hold = holdValue == 1;
 
                     if (hold)
                     {
@@ -174,7 +173,7 @@ namespace LottieUWP
                 return new Keyframe<T>(composition, startValue, endValue, interpolator, startFrame, null);
             }
 
-            internal static IList<IKeyframe<T>> ParseKeyframes(JsonArray json, LottieComposition composition, float scale, IAnimatableValueFactory<T> valueFactory)
+            internal static IList<IKeyframe<T>> ParseKeyframes(JArray json, LottieComposition composition, float scale, IAnimatableValueFactory<T> valueFactory)
             {
                 var length = json.Count;
                 if (length == 0)
@@ -184,7 +183,7 @@ namespace LottieUWP
                 IList<IKeyframe<T>> keyframes = new List<IKeyframe<T>>();
                 for (uint i = 0; i < length; i++)
                 {
-                    keyframes.Add(NewInstance(json.GetObjectAt(i), composition, scale, valueFactory));
+                    keyframes.Add(NewInstance((JObject)json[i], composition, scale, valueFactory));
                 }
 
                 SetEndFrames<IKeyframe<T>, T>(keyframes);

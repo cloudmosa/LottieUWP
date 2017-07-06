@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Windows.Data.Json;
+using Newtonsoft.Json.Linq;
 
 namespace LottieUWP
 {
@@ -38,9 +38,9 @@ namespace LottieUWP
                 return new AnimatableIntegerValue();
             }
 
-            internal static AnimatableIntegerValue NewInstance(JsonObject json, LottieComposition composition)
+            internal static AnimatableIntegerValue NewInstance(JObject json, LottieComposition composition)
             {
-                if (json != null && json.ContainsKey("x"))
+                if (json != null && json["x"] != null)
                 {
                     composition.AddWarning("Lottie doesn't support expressions.");
                 }
@@ -54,7 +54,7 @@ namespace LottieUWP
         {
             internal static readonly ValueFactory Instance = new ValueFactory();
 
-            public int? ValueFromObject(IJsonValue @object, float scale)
+            public int? ValueFromObject(JToken @object, float scale)
             {
                 return (int?) Math.Round(JsonUtils.ValueFromObject(@object) * scale);
             }

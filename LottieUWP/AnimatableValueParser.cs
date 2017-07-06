@@ -1,16 +1,16 @@
 ﻿using System.Collections.Generic;
-using Windows.Data.Json;
+using Newtonsoft.Json.Linq;
 
 namespace LottieUWP
 {
     internal class AnimatableValueParser<T>
     {
-        private readonly JsonObject _json;
+        private readonly JObject _json;
         private readonly float _scale;
         private readonly LottieComposition _composition;
         private readonly IAnimatableValueFactory<T> _valueFactory;
 
-        private AnimatableValueParser(JsonObject json, float scale, LottieComposition composition, IAnimatableValueFactory<T> valueFactory)
+        private AnimatableValueParser(JObject json, float scale, LottieComposition composition, IAnimatableValueFactory<T> valueFactory)
         {
             _json = json;
             _scale = scale;
@@ -18,7 +18,7 @@ namespace LottieUWP
             _valueFactory = valueFactory;
         }
 
-        internal static AnimatableValueParser<T> NewInstance(JsonObject json, float scale, LottieComposition composition, IAnimatableValueFactory<T> valueFactory)
+        internal static AnimatableValueParser<T> NewInstance(JObject json, float scale, LottieComposition composition, IAnimatableValueFactory<T> valueFactory)
         {
             return new AnimatableValueParser<T>(json, scale, composition, valueFactory);
         }
@@ -37,7 +37,7 @@ namespace LottieUWP
                 var k = _json["k"];
                 if (HasKeyframes(k))
                 {
-                    return Keyframe<T>.KeyFrameFactory.ParseKeyframes(k.GetArray(), _composition, _scale, _valueFactory);
+                    return Keyframe<T>.KeyFrameFactory.ParseKeyframes((JArray)k, _composition, _scale, _valueFactory);
                 }
                 return new List<IKeyframe<T>>();
             }
@@ -57,15 +57,15 @@ namespace LottieUWP
             return default(T);
         }
 
-        private static bool HasKeyframes(IJsonValue json)
+        private static bool HasKeyframes(JToken json)
         {
-            if (json.ValueType != JsonValueType.Array)
+            if (json.Type != JTokenType.Array)
             {
                 return false;
             }
 
-            var firstObject = json.GetArray()[0];
-            return firstObject.ValueType == JsonValueType.Object && firstObject.GetObject().ContainsKey("t");
+            var firstObject = ((JArray)json)[0];
+            return firstObject.Type == JTokenType.Object && ((JObject)firstObject)["t"] != null;
         }
 
         internal class Result

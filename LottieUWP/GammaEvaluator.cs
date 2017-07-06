@@ -1,5 +1,9 @@
 ﻿using System;
+#if WINDOWS_UWP
 using Windows.UI;
+#else
+using System.Windows.Media;
+#endif
 
 namespace LottieUWP
 {

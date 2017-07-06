@@ -1,6 +1,10 @@
 ﻿using System.Collections.Generic;
-using Windows.Data.Json;
+#if WINDOWS_UWP
 using Windows.UI;
+#else
+using System.Windows.Media;
+#endif
+using Newtonsoft.Json.Linq;
 
 namespace LottieUWP
 {
@@ -31,7 +35,7 @@ namespace LottieUWP
 
         internal static class Factory
         {
-            internal static AnimatableColorValue NewInstance(JsonObject json, LottieComposition composition)
+            internal static AnimatableColorValue NewInstance(JObject json, LottieComposition composition)
             {
                 var result = AnimatableValueParser<Color>.NewInstance(json, 1f, composition, ColorFactory.Instance).ParseJson();
                 return new AnimatableColorValue(result.Keyframes, result.InitialValue);

@@ -1,7 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
-using Windows.Data.Json;
+#if WINDOWS_UWP
 using Windows.UI;
+#else
+using System.Windows.Media;
+#endif
+using Newtonsoft.Json.Linq;
 
 namespace LottieUWP
 {
@@ -27,9 +31,9 @@ namespace LottieUWP
 
         internal static class Factory
         {
-            internal static AnimatableGradientColorValue NewInstance(JsonObject json, LottieComposition composition)
+            internal static AnimatableGradientColorValue NewInstance(JObject json, LottieComposition composition)
             {
-                var result = AnimatableValueParser<GradientColor>.NewInstance(json, 1, composition, new ValueFactory((int) json.GetNamedNumber("p"))).ParseJson();
+                var result = AnimatableValueParser<GradientColor>.NewInstance(json, 1, composition, new ValueFactory(json["p"].Value<int>())).ParseJson();
                 var initialValue = result.InitialValue;
                 return new AnimatableGradientColorValue(result.Keyframes, initialValue);
             }
@@ -64,9 +68,9 @@ namespace LottieUWP
             ///     ...
             /// ]
             /// </summary>
-            public GradientColor ValueFromObject(IJsonValue @object, float scale)
+            public GradientColor ValueFromObject(JToken @object, float scale)
             {
-                var array = @object.GetArray();
+                var array = (JArray)@object;
                 var positions = new float[_colorPoints];
                 var colors = new Color[_colorPoints];
                 var gradientColor = new GradientColor(positions, colors);
@@ -79,7 +83,7 @@ namespace LottieUWP
                 for (var i = 0; i < _colorPoints * 4; i++)
                 {
                     var colorIndex = i / 4;
-                    var value = array[i].GetNumber();
+                    var value = array[i].Value<float>();
                     switch (i % 4)
                     {
                         case 0:
@@ -112,7 +116,7 @@ namespace LottieUWP
             /// This should be a good approximation is nearly all cases. However, if there are many more
             /// opacity stops than color stops, information will be lost.
             /// </summary>
-            private void AddOpacityStopsToGradientIfNeeded(GradientColor gradientColor, JsonArray array)
+            private void AddOpacityStopsToGradientIfNeeded(GradientColor gradientColor, JArray array)
             {
                 var startIndex = _colorPoints * 4;
                 if (array.Count <= startIndex)
@@ -128,11 +132,11 @@ namespace LottieUWP
                 {
                     if (i % 2 == 0)
                     {
-                        positions[j] = array[i].GetNumber();
+                        positions[j] = array[i].Value<double>();
                     }
                     else
                     {
-                        opacities[j] = array[i].GetNumber();
+                        opacities[j] = array[i].Value<double>();
                         j++;
                     }
                 }

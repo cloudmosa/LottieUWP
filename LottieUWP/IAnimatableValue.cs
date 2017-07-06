@@ -1,4 +1,4 @@
-﻿using Windows.Data.Json;
+﻿using Newtonsoft.Json.Linq;
 
 namespace LottieUWP
 {
@@ -10,6 +10,6 @@ namespace LottieUWP
 
     internal interface IAnimatableValueFactory<out TV>
     {
-        TV ValueFromObject(IJsonValue @object, float scale);
+        TV ValueFromObject(JToken @object, float scale);
     }
 }

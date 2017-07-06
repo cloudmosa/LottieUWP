@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Windows.Data.Json;
+using Newtonsoft.Json.Linq;
 
 namespace LottieUWP
 {
@@ -34,7 +34,7 @@ namespace LottieUWP
         {
             internal static readonly ValueFactory Instance = new ValueFactory();
 
-            public virtual float? ValueFromObject(IJsonValue @object, float scale)
+            public virtual float? ValueFromObject(JToken @object, float scale)
             {
                 return JsonUtils.ValueFromObject(@object) * scale;
             }
@@ -47,10 +47,10 @@ namespace LottieUWP
                 return new AnimatableFloatValue();
             }
 
-            internal static AnimatableFloatValue NewInstance(JsonObject json, LottieComposition composition, bool isDp = true)
+            internal static AnimatableFloatValue NewInstance(JObject json, LottieComposition composition, bool isDp = true)
             {
                 var scale = isDp ? composition.DpScale : 1f;
-                if (json != null && json.ContainsKey("x"))
+                if (json != null && json["x"] != null)
                 {
                     composition.AddWarning("Lottie doesn't support expressions.");
                 }
